@@ -67,9 +67,11 @@ The website is not password-protected. Its metadata requests search engines not 
 
 ### Design details
 
-- Rose/cream palette, editorial serif type, decorative circles and flowers
-- Fully responsive gallery, timeline, letter-envelope interaction, Dua, final animated surprise
+- Cinematic black/gold palette, editorial serif type, floating perspective portrait and gold lighting
+- Responsive 3D gallery with enlarged photo viewer, keyboard navigation, native animated letter, Dua and final surprise
 - CSS only for animations: no paid library needed
 - `prefers-reduced-motion` support for accessibility
 
 Made especially for Awais's parents' 19 November 2026 anniversary.
+
+See `AUDIT.md` for gallery loading fixes, verification results and remaining visual checks. Production checks: `node scripts/verify-production.mjs` after starting the server on port 3100.
