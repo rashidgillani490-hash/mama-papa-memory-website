@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "For Mama & Papa | Happy Anniversary",
+  title: "Dreamy Memories | For Mama & Papa",
   description: "A little digital gift, made with love by your son.",
   robots: { index: false, follow: false },
 };

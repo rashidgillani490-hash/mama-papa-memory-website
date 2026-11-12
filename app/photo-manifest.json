@@ -1,0 +1,26 @@
+{
+  "/photos/memory-1.jpg": {
+    "width": 720,
+    "height": 999,
+    "srcSet": "/photos/responsive/memory-1-320.webp 320w, /photos/responsive/memory-1-560.webp 560w, /photos/responsive/memory-1-720.webp 720w",
+    "sha256": "69c49b08912de7cdf708ea1df7f8a07f116f8adc7ef17e9e97bc4a8318447728"
+  },
+  "/photos/memory-2.jpg": {
+    "width": 768,
+    "height": 1024,
+    "srcSet": "/photos/responsive/memory-2-320.webp 320w, /photos/responsive/memory-2-560.webp 560w, /photos/responsive/memory-2-768.webp 768w",
+    "sha256": "eadbc64b970fa9e071c15ba25f2d29ad0ec9f9e8bf49e80275118bdc285275dd"
+  },
+  "/photos/memory-3.jpg": {
+    "width": 960,
+    "height": 1280,
+    "srcSet": "/photos/responsive/memory-3-320.webp 320w, /photos/responsive/memory-3-560.webp 560w, /photos/responsive/memory-3-960.webp 960w",
+    "sha256": "2fc75415fb74e488169b2fa87e69a9beedce8ac891f3e5d0aa48e9713a82e8ec"
+  },
+  "/photos/memory-4.jpg": {
+    "width": 720,
+    "height": 1280,
+    "srcSet": "/photos/responsive/memory-4-320.webp 320w, /photos/responsive/memory-4-560.webp 560w, /photos/responsive/memory-4-720.webp 720w",
+    "sha256": "5e227fefab7d83bd7971ab140a4dc94e80e435f9c74a22c491bd300a8c65b87e"
+  }
+}

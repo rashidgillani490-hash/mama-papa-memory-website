@@ -67,11 +67,19 @@ The website is not password-protected. Its metadata requests search engines not 
 
 ### Design details
 
-- Cinematic black/gold palette, editorial serif type, floating perspective portrait and gold lighting
-- Responsive 3D gallery with enlarged photo viewer, keyboard navigation, native animated letter, Dua and final surprise
-- CSS only for animations: no paid library needed
+- Dreamy Memories: ivory, champagne, blush, warm gold and midnight accents; layered real-photo composition and cinematic lighting
+- Interactive story chapters, responsive 3D gallery, fullscreen photo viewer, keyboard/swipe controls, animated envelope and original letter, dua, surprise and local QR sharing
+- Motion for React plus lightweight CSS 3D; no WebGL required
 - `prefers-reduced-motion` support for accessibility
 
 Made especially for Awais's parents' 19 November 2026 anniversary.
 
 See `AUDIT.md` for gallery loading fixes, verification results and remaining visual checks. Production checks: `node scripts/verify-production.mjs` after starting the server on port 3100.
+
+### Dreamy Memories development
+
+`npm ci` installs the locked dependencies. `npm run build` prepares responsive WebP photos locally, then builds Next.js. `npm run typecheck` checks TypeScript. `npm run test:ui` runs the production browser suite (installed Windows Chrome, or Playwright Chromium on other systems).
+
+The original writing and JPEGs remain in `app/content.ts` and `public/photos/`. The interactive experience is in `app/components/DreamyMemories.tsx`; `MemoryImage.tsx` handles responsive images and recovery. `app/page.tsx` generates the QR locally at build time. No external image/QR service is used.
+
+The existing GitHub `main` branch is linked to Vercel. Use the Next.js preset, Node 22, and the default build command. The npm `prebuild` hook generates the local photo variants automatically. No environment variables are required. Complete verification details and remaining cross-browser limits are in `AUDIT.md`.

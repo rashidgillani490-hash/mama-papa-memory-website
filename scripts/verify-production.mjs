@@ -9,7 +9,7 @@ const html = await response.text();
 assert(!html.includes('Loading memory'), 'Server HTML must not contain the old indefinite loading state');
 assert(html.includes('<details class="letter"'), 'Letter must be available without JavaScript');
 const images = [...html.matchAll(/<img\b[^>]*>/g)].map(m => m[0]);
-assert.equal(images.length, 5, 'Hero and all four album photographs must render on the server');
+assert(images.length >= 5, 'Hero and all four album photographs must render on the server');
 for (const tag of images) {
   assert(!/opacity\s*:\s*0|visibility\s*:\s*hidden|display\s*:\s*none/.test(tag), 'Images must not start hidden');
   assert(/alt="[^"]+"/.test(tag), 'Every photograph needs descriptive alt text');
@@ -32,4 +32,15 @@ for (let i = 1; i <= 4; i++) {
   assert.equal(createHash('sha256').update(actual).digest('hex'), createHash('sha256').update(original).digest('hex'), 'Deployment must serve the original image bytes');
   console.log(`PASS ${path}: 200, JPEG, identical original bytes`);
 }
+const manifest = JSON.parse(await readFile(new URL('../app/photo-manifest.json', import.meta.url), 'utf8'));
+for (const asset of Object.values(manifest)) {
+  for (const entry of asset.srcSet.split(', ')) {
+    const path = entry.split(' ')[0];
+    const response = await fetch(base + path);
+    assert.equal(response.status, 200, `Responsive asset missing: ${path}`);
+    assert(response.headers.get('content-type')?.startsWith('image/webp'));
+  }
+}
+assert.equal(createHash('sha256').update(content).digest('hex'), '247331b9ccf4458b7056736d33e009e7fb041fdd51d31e4a2679f6c449d0429c', 'Original personal content must remain byte-for-byte unchanged');
+console.log('PASS: original content checksum and all local responsive WebP paths.');
 console.log('PASS: SSR image visibility, original captions/milestones, native letter, descriptive alt text, navigation anchors.');
